@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadProducts"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{94B319FB-EB1A-4184-99F5-0DC8499B8BA3}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{5D4829A8-68B1-46F4-9FFB-ECF0B24B53A2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -206,8 +206,8 @@
               <connections>
                 <connection
                   refId="Package\Load Products From Source A\Источник &quot;OLE DB&quot;.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DemoSSIS_SourceA 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DemoSSIS_SourceA 1]"
+                  connectionManagerID="{282FC0E0-8A06-4AD3-A4F7-49170713B00D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DemoSSIS_SourceA]"
                   description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
                   name="OleDbConnection" />
               </connections>
@@ -359,8 +359,8 @@
               <connections>
                 <connection
                   refId="Package\Load Products From Source A\Назначение &quot;OLE DB&quot;.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DemoSSIS_Target]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DemoSSIS_Target]"
+                  connectionManagerID="{25157E14-70F9-445D-8768-5D5DC0DDCE1B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Target]"
                   description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
                   name="OleDbConnection" />
               </connections>
@@ -539,8 +539,8 @@ FROM Products</property>
               <connections>
                 <connection
                   refId="Package\Load Products From Source B\Источник &quot;OLE DB&quot;.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DemoSSIS_SourceB]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DemoSSIS_SourceB]"
+                  connectionManagerID="{37F80858-2550-474F-B1D3-9644FAAB2B60}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SourceB]"
                   description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
                   name="OleDbConnection" />
               </connections>
@@ -716,8 +716,8 @@ FROM Products</property>
               <connections>
                 <connection
                   refId="Package\Load Products From Source B\Назначение &quot;OLE DB&quot;.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DemoSSIS_Target]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DemoSSIS_Target]"
+                  connectionManagerID="{25157E14-70F9-445D-8768-5D5DC0DDCE1B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Target]"
                   description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
                   name="OleDbConnection" />
               </connections>
@@ -860,6 +860,10 @@ FROM Products</property>
           Size="218,42"
           Id="Package\Load Products From Source A"
           TopLeft="100,204" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Load Products From Source B"
+          TopLeft="97,304" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Ограничение]"
           TopLeft="211.75,148">
@@ -882,10 +886,6 @@ FROM Products</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="218,42"
-          Id="Package\Load Products From Source B"
-          TopLeft="97,304" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Ограничение 1]"
           TopLeft="207.5,246">
@@ -924,28 +924,6 @@ FROM Products</property>
           Size="144,42"
           Id="Package\Load Products From Source A\Add SourceID"
           TopLeft="170,192" />
-        <EdgeLayout
-          Id="Package\Load Products From Source A.Paths[Выход источника &quot;OLE DB&quot;]"
-          TopLeft="243.75,142">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,50"
-              Start="0,0"
-              End="0,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="185,42"
           Id="Package\Load Products From Source A\Назначение &quot;OLE DB&quot;"
@@ -964,6 +942,28 @@ FROM Products</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Products From Source A.Paths[Выход источника &quot;OLE DB&quot;]"
+          TopLeft="243.75,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1005,7 +1005,7 @@ FROM Products</property>
     design-time-name="Package\Load Products From Source B">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="173,42"
           Id="Package\Load Products From Source B\Источник &quot;OLE DB&quot;"
@@ -1033,7 +1033,9 @@ FROM Products</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
