@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadProducts"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{5D4829A8-68B1-46F4-9FFB-ECF0B24B53A2}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{9E64EA98-2E9F-4231-B9CA-9DE511780B30}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -28,6 +28,16 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.DemoSSIS_SourceA 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{AFF86967-EF58-4871-8C01-E815E3CF6725}"
+      DTS:ObjectName="LocalHost.DemoSSIS_SourceA 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=DemoSSIS_SourceA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LocalHost.DemoSSIS_SourceB]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{7EF751E0-64C7-460D-BDD2-E3F2682F5F7B}"
@@ -38,6 +48,16 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.DemoSSIS_SourceB 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{443EDE88-4F6E-4372-95E4-EE14247D7E4E}"
+      DTS:ObjectName="LocalHost.DemoSSIS_SourceB 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=DemoSSIS_SourceB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LocalHost.DemoSSIS_Target]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{F4DB19B1-8A95-488E-AEAC-23CD4D20A643}"
@@ -45,6 +65,26 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=.;Initial Catalog=DemoSSIS_Target;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.DemoSSIS_Target 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{44FA8066-E637-49F4-B7DF-CE9BD5CB77A2}"
+      DTS:ObjectName="LocalHost.DemoSSIS_Target 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=DemoSSIS_Target;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.DemoSSIS_Target 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D1EB9BE6-E3BA-4EF6-8ABD-F7DF559957F3}"
+      DTS:ObjectName="LocalHost.DemoSSIS_Target 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=DemoSSIS_Target;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -206,8 +246,8 @@
               <connections>
                 <connection
                   refId="Package\Load Products From Source A\Источник &quot;OLE DB&quot;.Connections[OleDbConnection]"
-                  connectionManagerID="{282FC0E0-8A06-4AD3-A4F7-49170713B00D}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DemoSSIS_SourceA]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DemoSSIS_SourceA 2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DemoSSIS_SourceA 2]"
                   description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
                   name="OleDbConnection" />
               </connections>
@@ -359,8 +399,8 @@
               <connections>
                 <connection
                   refId="Package\Load Products From Source A\Назначение &quot;OLE DB&quot;.Connections[OleDbConnection]"
-                  connectionManagerID="{25157E14-70F9-445D-8768-5D5DC0DDCE1B}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Target]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DemoSSIS_Target 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DemoSSIS_Target 1]"
                   description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
                   name="OleDbConnection" />
               </connections>
@@ -539,8 +579,8 @@ FROM Products</property>
               <connections>
                 <connection
                   refId="Package\Load Products From Source B\Источник &quot;OLE DB&quot;.Connections[OleDbConnection]"
-                  connectionManagerID="{37F80858-2550-474F-B1D3-9644FAAB2B60}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SourceB]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DemoSSIS_SourceB 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DemoSSIS_SourceB 1]"
                   description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
                   name="OleDbConnection" />
               </connections>
@@ -716,8 +756,8 @@ FROM Products</property>
               <connections>
                 <connection
                   refId="Package\Load Products From Source B\Назначение &quot;OLE DB&quot;.Connections[OleDbConnection]"
-                  connectionManagerID="{25157E14-70F9-445D-8768-5D5DC0DDCE1B}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Target]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DemoSSIS_Target 2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DemoSSIS_Target 2]"
                   description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
                   name="OleDbConnection" />
               </connections>
@@ -853,9 +893,9 @@ FROM Products</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="229,42"
+          Size="236,42"
           Id="Package\Delete All Products From Target"
-          TopLeft="100,106" />
+          TopLeft="98,85" />
         <NodeLayout
           Size="218,42"
           Id="Package\Load Products From Source A"
@@ -866,18 +906,18 @@ FROM Products</property>
           TopLeft="97,304" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Ограничение]"
-          TopLeft="211.75,148">
+          TopLeft="212.5,127">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56"
+              EndConnector="0,77"
               Start="0,0"
-              End="0,48.5">
+              End="0,69.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.5" />
+                    End="0,69.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -927,10 +967,10 @@ FROM Products</property>
         <NodeLayout
           Size="185,42"
           Id="Package\Load Products From Source A\Назначение &quot;OLE DB&quot;"
-          TopLeft="153,306" />
+          TopLeft="151,306" />
         <EdgeLayout
           Id="Package\Load Products From Source A.Paths[Выход производного столбца]"
-          TopLeft="243.75,234">
+          TopLeft="242.75,234">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1005,18 +1045,18 @@ FROM Products</property>
     design-time-name="Package\Load Products From Source B">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="173,42"
           Id="Package\Load Products From Source B\Источник &quot;OLE DB&quot;"
           TopLeft="194,29" />
         <NodeLayout
-          Size="185,42"
+          Size="192,42"
           Id="Package\Load Products From Source B\Назначение &quot;OLE DB&quot;"
           TopLeft="189,142" />
         <EdgeLayout
           Id="Package\Load Products From Source B.Paths[Выход источника &quot;OLE DB&quot;]"
-          TopLeft="281,71">
+          TopLeft="282.75,71">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1033,9 +1073,7 @@ FROM Products</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
