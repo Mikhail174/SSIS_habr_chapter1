@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadResidues"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="101"
-  DTS:VersionGUID="{D11AF2BF-C13A-4257-B76B-1A7C877F4DA5}">
+  DTS:VersionBuild="111"
+  DTS:VersionGUID="{6CECFE7F-EC1B-4F2E-AEEC-411498DEE804}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -113,7 +113,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{25157E14-70F9-445D-8768-5D5DC0DDCE1B}"
+          SQLTask:Connection="{4675FD0E-A636-42E5-AFB8-A578C0BCB108}"
           SQLTask:SqlStatementSource="DELETE res &#xA;FROM ProductResidues res&#xA;JOIN Products prod ON res.ProductID=prod.SourceProductID&#xA;WHERE ResidueDate&gt;=?&#xA;  AND prod.SourceID=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
@@ -142,7 +142,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{25157E14-70F9-445D-8768-5D5DC0DDCE1B}"
+          SQLTask:Connection="{4675FD0E-A636-42E5-AFB8-A578C0BCB108}"
           SQLTask:SqlStatementSource="SELECT ISNULL(DATEADD(DAY,-?,MAX(res.ResidueDate)),'19000101') FromDate&#xA;FROM ProductResidues res&#xA;JOIN Products prod ON res.ProductID=prod.ID&#xA;WHERE prod.SourceID=?"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -233,8 +233,8 @@ WHERE ResidueDate&gt;=?</property>
               <connections>
                 <connection
                   refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[WKS456\MSSQLSERVERD.DemoSSIS_SourceA]"
-                  connectionManagerRefId="Package.ConnectionManagers[WKS456\MSSQLSERVERD.DemoSSIS_SourceA]"
+                  connectionManagerID="{830F7B0A-1543-4440-BBEE-63CA3088946C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DemoSSIS_SourceA]"
                   description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
                   name="OleDbConnection" />
               </connections>
@@ -389,8 +389,8 @@ WHERE ResidueDate&gt;=?</property>
               <connections>
                 <connection
                   refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[WKS456\MSSQLSERVERD.DemoSSIS_Target]"
-                  connectionManagerRefId="Package.ConnectionManagers[WKS456\MSSQLSERVERD.DemoSSIS_Target]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DemoSSIS_Target]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DemoSSIS_Target]"
                   description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
                   name="OleDbConnection" />
               </connections>
@@ -671,7 +671,7 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Указывает, следует ли ссылаться на метаданные в формате XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Title" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Price" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SourceID" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1251"/&gt;&lt;referenceColumn name="SourceProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UpdatedOn" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Title" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Price" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SourceID" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1251"/&gt;&lt;referenceColumn name="SourceProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -689,8 +689,8 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Задача потока данных\Уточняющий запрос.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[WKS456\MSSQLSERVERD.DemoSSIS_Target]"
-                  connectionManagerRefId="Package.ConnectionManagers[WKS456\MSSQLSERVERD.DemoSSIS_Target]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DemoSSIS_Target]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DemoSSIS_Target]"
                   description="Диспетчер соединений, используемый для доступа к данным уточняющих запросов."
                   name="OleDbConnection" />
               </connections>
@@ -1014,7 +1014,7 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-1.39184895833353,-65.9100758396533,287.11703125,16"
+              BoundingBox="7.47680338541667,-65.9100758396533,269.3797265625,12"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1024,32 +1024,34 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="101,118"
+              EndConnector="71.8333333333333,118"
               Start="0,0"
-              End="101,110.5">
+              End="71.8333333333333,110.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55" />
+                    End="0,66.1863488624052" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,55"
-                    Point2="0,59"
-                    Point3="4,59" />
+                    Point1="0,66.1863488624052"
+                    Point2="0,70.1863488624052"
+                    Point3="4,70.1863488624052" />
                   <mssgle:LineSegment
-                    End="97,59" />
+                    End="67.8333333333333,70.1863488624052" />
                   <mssgle:CubicBezierSegment
-                    Point1="97,59"
-                    Point2="101,59"
-                    Point3="101,63" />
+                    Point1="67.8333333333333,70.1863488624052"
+                    Point2="71.8333333333333,70.1863488624052"
+                    Point3="71.8333333333333,74.1863488624052" />
                   <mssgle:LineSegment
-                    End="101,110.5" />
+                    End="71.8333333333333,110.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="27.9166666666667,75.1863488624052,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
