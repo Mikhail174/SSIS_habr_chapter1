@@ -12,11 +12,21 @@
   DTS:ObjectName="LoadProducts_ver2"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{92C40370-F080-4BDD-AD1E-2644475CDA02}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{B9C7F11B-A390-44B0-A891-E555D89044CF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.DemoSSIS_SourceB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9604E80D-D3B9-44A4-A5FF-46646E25C5C5}"
+      DTS:ObjectName="LocalHost.DemoSSIS_SourceB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=DemoSSIS_SourceB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[WKS456\MSSQLSERVERD.DemoSSIS_SourceA]"
       DTS:CreationName="OLEDB"
@@ -25,6 +35,16 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=WKS456\MSSQLSERVERD;Initial Catalog=DemoSSIS_SourceA;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[WKS456\MSSQLSERVERD.DemoSSIS_SourceB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C88E2703-3B1A-46CA-9C1C-D300BB7DDB7F}"
+      DTS:ObjectName="WKS456\MSSQLSERVERD.DemoSSIS_SourceB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=WKS456\MSSQLSERVERD;Initial Catalog=DemoSSIS_SourceB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -275,8 +295,8 @@ FROM Products</property>
               <connections>
                 <connection
                   refId="Package\Задача потока данных\Source B.Connections[OleDbConnection]"
-                  connectionManagerID="{37F80858-2550-474F-B1D3-9644FAAB2B60}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SourceB]"
+                  connectionManagerID="Package.ConnectionManagers[WKS456\MSSQLSERVERD.DemoSSIS_SourceB]"
+                  connectionManagerRefId="Package.ConnectionManagers[WKS456\MSSQLSERVERD.DemoSSIS_SourceB]"
                   description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
                   name="OleDbConnection" />
               </connections>
@@ -1139,7 +1159,7 @@ END</property>
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
   SourceID,
   SourceProductID,
-  ID TargetID
+  ID TargetID 
 FROM Products</property>
                 <property
                   dataType="System.String"
@@ -1149,7 +1169,7 @@ FROM Products</property>
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT
   SourceID,
   SourceProductID,
-  ID TargetID
+  ID TargetID 
 FROM Products) [refTable]
 where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
                 <property
@@ -1352,6 +1372,16 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение]"
+      DTS:CreationName=""
+      DTS:DTSID="{9E442F84-75CA-4DB9-B3C3-CCCB01DA895B}"
+      DTS:From="Package\Задача &quot;Выполнение SQL&quot;"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение"
+      DTS:To="Package\Задача потока данных" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--В данном разделе CDATA содержатся сведения о макете пакета. В данном разделе содержатся сведения о координатах (x,y), ширине и высоте.-->
 <!--В случае возникновения ошибки при редактировании этого раздела вручную его можно удалить. -->
@@ -1363,15 +1393,49 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="190,42"
-          Id="Package\Задача потока данных"
-          TopLeft="176,162" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="208,42"
           Id="Package\Задача &quot;Выполнение SQL&quot;"
           TopLeft="172,92" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Задача потока данных"
+          TopLeft="189,251" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение]"
+          TopLeft="276,134">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8,117"
+              Start="0,0"
+              End="8,109.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,54.5"
+                    Point2="0,58.5"
+                    Point3="4,58.5" />
+                  <mssgle:LineSegment
+                    End="4,58.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4,58.5"
+                    Point2="8,58.5"
+                    Point3="8,62.5" />
+                  <mssgle:LineSegment
+                    End="8,109.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1381,43 +1445,159 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="121,42"
-          Id="Package\Задача потока данных\Source A"
-          TopLeft="328,35" />
+          Size="188,42"
+          Id="Package\Задача потока данных\Производный столбец"
+          TopLeft="394,246" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Задача потока данных\Уточняющий запрос"
+          TopLeft="400,336" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Задача потока данных\To LastAddedProducts"
+          TopLeft="266,515" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Задача потока данных\Команда OLE DB"
+          TopLeft="825,445" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Задача потока данных\To Products"
+          TopLeft="46,513" />
         <NodeLayout
           Size="121,42"
           Id="Package\Задача потока данных\Source B"
           TopLeft="508,36" />
         <NodeLayout
+          Size="203,42"
+          Id="Package\Задача потока данных\Многоадресная рассылка"
+          TopLeft="162,418" />
+        <NodeLayout
           Size="121,42"
           Id="Package\Задача потока данных\Union All"
           TopLeft="421,155" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Задача потока данных\Source A"
+          TopLeft="328,35" />
         <EdgeLayout
-          Id="Package\Задача потока данных.Paths[Выход источника &quot;OLE DB&quot;]"
-          TopLeft="388.5,77">
+          Id="Package\Задача потока данных.Paths[Многоадресная рассылка Выход 1]"
+          TopLeft="231,460">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="93,78"
+              EndConnector="-117.5,53"
               Start="0,0"
-              End="93,70.5">
+              End="-117.5,45.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35" />
+                    End="0,17.4486803519062" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,35"
-                    Point2="0,39"
-                    Point3="4,39" />
+                    Point1="0,17.4486803519062"
+                    Point2="0,21.4486803519062"
+                    Point3="-4,21.4486803519062" />
                   <mssgle:LineSegment
-                    End="89,39" />
+                    End="-113.5,21.4486803519062" />
                   <mssgle:CubicBezierSegment
-                    Point1="89,39"
-                    Point2="93,39"
-                    Point3="93,43" />
+                    Point1="-113.5,21.4486803519062"
+                    Point2="-117.5,21.4486803519062"
+                    Point3="-117.5,25.4486803519062" />
                   <mssgle:LineSegment
-                    End="93,70.5" />
+                    End="-117.5,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Задача потока данных.Paths[Выход производного столбца]"
+          TopLeft="488.5,288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Задача потока данных.Paths[Выход несовпадающих строк уточняющего запроса]"
+          TopLeft="460.666666666667,378">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-197.166666666667,40"
+              Start="0,0"
+              End="-197.166666666667,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.2138084632517" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.2138084632517"
+                    Point2="0,16.2138084632517"
+                    Point3="-4,16.2138084632517" />
+                  <mssgle:LineSegment
+                    End="-193.166666666667,16.2138084632517" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-193.166666666667,16.2138084632517"
+                    Point2="-197.166666666667,16.2138084632517"
+                    Point3="-197.166666666667,20.2138084632517" />
+                  <mssgle:LineSegment
+                    End="-197.166666666667,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-218.181692708333,21.2138084632517,239.19671875,11.2822265625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Задача потока данных.Paths[Выход многоадресной рассылки 1]"
+          TopLeft="296,460">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="62,55"
+              Start="0,0"
+              End="62,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.258064516129" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.258064516129"
+                    Point2="0,22.258064516129"
+                    Point3="4,22.258064516129" />
+                  <mssgle:LineSegment
+                    End="58,22.258064516129" />
+                  <mssgle:CubicBezierSegment
+                    Point1="58,22.258064516129"
+                    Point2="62,22.258064516129"
+                    Point3="62,26.258064516129" />
+                  <mssgle:LineSegment
+                    End="62,47.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1460,24 +1640,32 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="188,42"
-          Id="Package\Задача потока данных\Производный столбец"
-          TopLeft="394,246" />
         <EdgeLayout
-          Id="Package\Задача потока данных.Paths[Union All Выход 1]"
-          TopLeft="484.75,197">
+          Id="Package\Задача потока данных.Paths[Выход источника &quot;OLE DB&quot;]"
+          TopLeft="388.5,77">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,49"
+              EndConnector="93,78"
               Start="0,0"
-              End="0,41.5">
+              End="93,70.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.5" />
+                    End="0,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35"
+                    Point2="0,39"
+                    Point3="4,39" />
+                  <mssgle:LineSegment
+                    End="89,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="89,39"
+                    Point2="93,39"
+                    Point3="93,43" />
+                  <mssgle:LineSegment
+                    End="93,70.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1486,40 +1674,6 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="178,42"
-          Id="Package\Задача потока данных\Уточняющий запрос"
-          TopLeft="400,336" />
-        <EdgeLayout
-          Id="Package\Задача потока данных.Paths[Выход производного столбца]"
-          TopLeft="488.5,288">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48"
-              Start="0,0"
-              End="0,40.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="135,42"
-          Id="Package\Задача потока данных\To Products"
-          TopLeft="46,513" />
-        <NodeLayout
-          Size="160,42"
-          Id="Package\Задача потока данных\Команда OLE DB"
-          TopLeft="825,445" />
         <EdgeLayout
           Id="Package\Задача потока данных.Paths[Вывод совпадений преобразования &quot;Уточняющий запрос&quot;]"
           TopLeft="517.333333333333,378">
@@ -1552,114 +1706,24 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="59.1434700520833,32.1581291759465,269.3797265625,12"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Задача потока данных\To LastAddedProducts"
-          TopLeft="266,515" />
-        <NodeLayout
-          Size="203,42"
-          Id="Package\Задача потока данных\Многоадресная рассылка"
-          TopLeft="162,418" />
-        <EdgeLayout
-          Id="Package\Задача потока данных.Paths[Выход несовпадающих строк уточняющего запроса]"
-          TopLeft="460.666666666667,378">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-197.166666666667,40"
-              Start="0,0"
-              End="-197.166666666667,32.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.2138084632517" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.2138084632517"
-                    Point2="0,16.2138084632517"
-                    Point3="-4,16.2138084632517" />
-                  <mssgle:LineSegment
-                    End="-193.166666666667,16.2138084632517" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-193.166666666667,16.2138084632517"
-                    Point2="-197.166666666667,16.2138084632517"
-                    Point3="-197.166666666667,20.2138084632517" />
-                  <mssgle:LineSegment
-                    End="-197.166666666667,32.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-218.181692708333,21.2138084632517,239.19671875,11.2822265625"
+              BoundingBox="59.1434700520835,32.1581291759465,269.3797265625,12"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Задача потока данных.Paths[Многоадресная рассылка Выход 1]"
-          TopLeft="231,460">
+          Id="Package\Задача потока данных.Paths[Union All Выход 1]"
+          TopLeft="484.75,197">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-117.5,53"
+              EndConnector="0,49"
               Start="0,0"
-              End="-117.5,45.5">
+              End="0,41.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.4486803519062" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.4486803519062"
-                    Point2="0,21.4486803519062"
-                    Point3="-4,21.4486803519062" />
-                  <mssgle:LineSegment
-                    End="-113.5,21.4486803519062" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-113.5,21.4486803519062"
-                    Point2="-117.5,21.4486803519062"
-                    Point3="-117.5,25.4486803519062" />
-                  <mssgle:LineSegment
-                    End="-117.5,45.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Задача потока данных.Paths[Выход многоадресной рассылки 1]"
-          TopLeft="296,460">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="62,55"
-              Start="0,0"
-              End="62,47.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.258064516129" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.258064516129"
-                    Point2="0,22.258064516129"
-                    Point3="4,22.258064516129" />
-                  <mssgle:LineSegment
-                    End="58,22.258064516129" />
-                  <mssgle:CubicBezierSegment
-                    Point1="58,22.258064516129"
-                    Point2="62,22.258064516129"
-                    Point3="62,26.258064516129" />
-                  <mssgle:LineSegment
-                    End="62,47.5" />
+                    End="0,41.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1672,7 +1736,43 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Задача потока данных\Source A">
+    design-time-name="Package\Задача потока данных\Уточняющий запрос">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Задача потока данных\To LastAddedProducts">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Задача потока данных\To Products">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1698,43 +1798,7 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Задача потока данных\Уточняющий запрос">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Задача потока данных\To Products">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Задача потока данных\To LastAddedProducts">
+    design-time-name="Package\Задача потока данных\Source A">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
