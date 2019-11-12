@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadResidues"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="130"
-  DTS:VersionGUID="{5D503E85-117F-48C8-94C5-33A86B438837}">
+  DTS:VersionBuild="131"
+  DTS:VersionGUID="{E31A6664-E10B-49E3-977A-0D7BBC297797}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>

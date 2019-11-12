@@ -1,28 +1,27 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="11/12/2019 1:27:39 PM"
+  DTS:CreationDate="11/12/2019 3:11:19 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="WKS456"
   DTS:CreatorName="NIS\PopovMS"
-  DTS:DTSID="{BB8EF9ED-87A4-43B2-83AE-76EA5CD24F93}"
+  DTS:DTSID="{C24D808F-7F33-47FE-ADDB-0970F0C64E44}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.1301.433"
   DTS:LocaleID="1049"
   DTS:ObjectName="LoadAll"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{2A3D681B-056C-4533-8A35-DCCAB4285C11}">
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{0EAC9FB6-5109-45C5-9341-EFDC6B0388A0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{FF948ABB-EC75-414C-9E99-05AE1EEB4A09}"
-      DTS:ObjectName="SourceA_ID"
-      DTS:Required="True">
+      DTS:DTSID="{19658BF7-24F5-4950-99E8-004257D4B8AC}"
+      DTS:ObjectName="SourceA_ID">
       <DTS:Property
         DTS:DataType="8"
         DTS:Name="ParameterValue">A</DTS:Property>
@@ -30,9 +29,8 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{E1177A04-4109-4777-87B5-09D99D6A0439}"
-      DTS:ObjectName="SourceB_ID"
-      DTS:Required="True">
+      DTS:DTSID="{F2D625CD-5FA3-4847-9567-A14AB8A4C977}"
+      DTS:ObjectName="SourceB_ID">
       <DTS:Property
         DTS:DataType="8"
         DTS:Name="ParameterValue">B</DTS:Property>
@@ -44,7 +42,7 @@
       DTS:refId="Package\Load Products"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Задача &quot;Выполнение пакета&quot;"
-      DTS:DTSID="{3C343321-88AD-4E70-A6F1-9A2AD45642AD}"
+      DTS:DTSID="{FEF80532-B92D-401F-A211-349E9C9D6A0B}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Load Products"
@@ -61,7 +59,7 @@
       DTS:refId="Package\Load Resudues A"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Задача &quot;Выполнение пакета&quot;"
-      DTS:DTSID="{406D7711-00AB-4F6D-AB45-27874972429F}"
+      DTS:DTSID="{9BEA9CE0-56E0-491B-A881-ADF347D39980}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Load Resudues A"
@@ -82,7 +80,7 @@
       DTS:refId="Package\Load Resudues B"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Задача &quot;Выполнение пакета&quot;"
-      DTS:DTSID="{639FE4E9-A1CA-429F-BE20-FFFEC80AC081}"
+      DTS:DTSID="{BD3BBB7A-5138-42CA-835C-0CE48E256C48}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Load Resudues B"
@@ -104,7 +102,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Ограничение]"
       DTS:CreationName=""
-      DTS:DTSID="{57B8BC1F-EC1B-4BD5-AB62-46EA48F55228}"
+      DTS:DTSID="{8FA739CC-09B1-4732-B6B6-8A0CE5F87933}"
       DTS:From="Package\Load Products"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Ограничение"
@@ -112,7 +110,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Ограничение 1]"
       DTS:CreationName=""
-      DTS:DTSID="{B0FCB142-12EF-46CB-8513-413486CAA6CC}"
+      DTS:DTSID="{C9EA0DED-3B8F-455C-9825-C73CE9DAB0AA}"
       DTS:From="Package\Load Resudues A"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Ограничение 1"
@@ -134,41 +132,29 @@
         <NodeLayout
           Size="146,42"
           Id="Package\Load Products"
-          TopLeft="221,63" />
+          TopLeft="178,99" />
         <NodeLayout
           Size="160,42"
           Id="Package\Load Resudues A"
-          TopLeft="193,216" />
+          TopLeft="177,192" />
         <NodeLayout
           Size="160,42"
           Id="Package\Load Resudues B"
-          TopLeft="175,345" />
+          TopLeft="317,304" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Ограничение]"
-          TopLeft="294,105">
+          TopLeft="254,141">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-21,111"
+              EndConnector="0,51"
               Start="0,0"
-              End="-21,103.5">
+              End="0,43.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,51.5"
-                    Point2="0,55.5"
-                    Point3="-4,55.5" />
-                  <mssgle:LineSegment
-                    End="-17,55.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-17,55.5"
-                    Point2="-21,55.5"
-                    Point3="-21,59.5" />
-                  <mssgle:LineSegment
-                    End="-21,103.5" />
+                    End="0,43.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -179,37 +165,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Ограничение 1]"
-          TopLeft="273,258">
+          TopLeft="257,234">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-18,87"
+              EndConnector="140,70"
               Start="0,0"
-              End="-18,79.5">
+              End="140,62.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.5" />
+                    End="0,31" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,39.5"
-                    Point2="0,43.5"
-                    Point3="-4,43.5" />
+                    Point1="0,31"
+                    Point2="0,35"
+                    Point3="4,35" />
                   <mssgle:LineSegment
-                    End="-14,43.5" />
+                    End="136,35" />
                   <mssgle:CubicBezierSegment
-                    Point1="-14,43.5"
-                    Point2="-18,43.5"
-                    Point3="-18,47.5" />
+                    Point1="136,35"
+                    Point2="140,35"
+                    Point3="140,39" />
                   <mssgle:LineSegment
-                    End="-18,79.5" />
+                    End="140,62.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-37.87931640625,48.5,57.7586328125,11.4140625"
+              BoundingBox="41.12068359375,40,57.7586328125,11.4140625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
