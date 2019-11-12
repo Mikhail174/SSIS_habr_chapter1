@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadProducts_ver2"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{E2B2B68D-2D7A-4D1A-9712-F6EC6DCEBF56}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{A4F51AE0-7FB0-4369-B2FF-E020E41CDD40}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -645,6 +645,10 @@ FROM Products</property>
                       refId="Package\Задача потока данных\To Products.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SourceProductID]"
                       dataType="i4"
                       name="SourceProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\To Products.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[UpdatedOn]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedOn" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1399,6 +1403,10 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
           Id="Package\Задача потока данных\To LastAddedProducts"
           TopLeft="266,515" />
         <NodeLayout
+          Size="168,42"
+          Id="Package\Задача потока данных\Команда OLE DB"
+          TopLeft="509,452" />
+        <NodeLayout
           Size="135,42"
           Id="Package\Задача потока данных\To Products"
           TopLeft="46,513" />
@@ -1613,32 +1621,6 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Задача потока данных.Paths[Union All Выход 1]"
-          TopLeft="484.75,197">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,49"
-              Start="0,0"
-              End="0,41.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="168,42"
-          Id="Package\Задача потока данных\Команда OLE DB"
-          TopLeft="509,452" />
-        <EdgeLayout
           Id="Package\Задача потока данных.Paths[Вывод совпадений преобразования &quot;Уточняющий запрос&quot;]"
           TopLeft="517.333333333333,378">
           <EdgeLayout.Curve>
@@ -1672,6 +1654,28 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
             <mssgm:EdgeLabel
               BoundingBox="-96.8565299479167,34.9955456570156,269.3797265625,12"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Задача потока данных.Paths[Union All Выход 1]"
+          TopLeft="484.75,197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

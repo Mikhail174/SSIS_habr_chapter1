@@ -12,71 +12,19 @@
   DTS:ObjectName="LoadResidues"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="111"
-  DTS:VersionGUID="{6CECFE7F-EC1B-4F2E-AEEC-411498DEE804}">
+  DTS:VersionBuild="130"
+  DTS:VersionGUID="{5D503E85-117F-48C8-94C5-33A86B438837}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LocalHost.DemoSSIS_SourceA 1]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{BDE28760-DBE0-41D4-A8B4-AD282C7E89C6}"
-      DTS:ObjectName="LocalHost.DemoSSIS_SourceA 1">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=.;Initial Catalog=DemoSSIS_SourceA;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LocalHost.DemoSSIS_Target]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{4675FD0E-A636-42E5-AFB8-A578C0BCB108}"
-      DTS:ObjectName="LocalHost.DemoSSIS_Target">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=.;Initial Catalog=DemoSSIS_Target;Format=Tabular;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[WKS456\MSSQLSERVERD.DemoSSIS_SourceA]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{D0ECE0D0-3D21-49B6-99F4-3F14C0564C56}"
-      DTS:ObjectName="WKS456\MSSQLSERVERD.DemoSSIS_SourceA">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=WKS456\MSSQLSERVERD;Initial Catalog=DemoSSIS_SourceA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[WKS456\MSSQLSERVERD.DemoSSIS_SourceB]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{57F3DE03-0510-4BF8-99BE-47F56222BC1F}"
-      DTS:ObjectName="WKS456\MSSQLSERVERD.DemoSSIS_SourceB">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=WKS456\MSSQLSERVERD;Initial Catalog=DemoSSIS_SourceB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[WKS456\MSSQLSERVERD.DemoSSIS_Target]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{48E4D9BC-9A50-4500-8089-365E9102F5E1}"
-      DTS:ObjectName="WKS456\MSSQLSERVERD.DemoSSIS_Target">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=WKS456\MSSQLSERVERD;Initial Catalog=DemoSSIS_Target;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:PackageParameters>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="3"
-      DTS:DTSID="{26A32733-AF49-4634-A495-9056FF5DAA11}"
+      DTS:DTSID="{7F061B17-FD79-4618-B3C5-6A45B1BF6010}"
       DTS:ObjectName="DateOffset">
       <DTS:Property
         DTS:DataType="3"
-        DTS:Name="ParameterValue">7</DTS:Property>
+        DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -113,7 +61,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4675FD0E-A636-42E5-AFB8-A578C0BCB108}"
+          SQLTask:Connection="{E0D38919-DA31-4F51-85F0-6F409D31F680}"
           SQLTask:SqlStatementSource="DELETE res &#xA;FROM ProductResidues res&#xA;JOIN Products prod ON res.ProductID=prod.SourceProductID&#xA;WHERE ResidueDate&gt;=?&#xA;  AND prod.SourceID=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
@@ -142,7 +90,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4675FD0E-A636-42E5-AFB8-A578C0BCB108}"
+          SQLTask:Connection="{E0D38919-DA31-4F51-85F0-6F409D31F680}"
           SQLTask:SqlStatementSource="SELECT ISNULL(DATEADD(DAY,-?,MAX(res.ResidueDate)),'19000101') FromDate&#xA;FROM ProductResidues res&#xA;JOIN Products prod ON res.ProductID=prod.ID&#xA;WHERE prod.SourceID=?"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -202,10 +150,15 @@
                   dataType="System.String"
                   description="Команда SQL для выполнения."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Select 
- ResidueDate,
- ProductID,
- ResidueAmount
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">DECLARE @SourceID char(1)=?
+
+IF(@SourceID='B') USE DemoSSIS_SourceB
+ELSE  USE DemoSSIS_SourceA
+
+SELECT
+  ResidueDate,
+  ProductID,
+  ResidueAmount
 FROM ProductResidues
 WHERE ResidueDate&gt;=?</property>
                 <property
@@ -228,7 +181,7 @@ WHERE ResidueDate&gt;=?</property>
                 <property
                   dataType="System.String"
                   description="Сопоставления между параметрами в команде SQL и переменными."
-                  name="ParameterMapping">"Параметр0:Input",{C51FF172-4E31-4C71-AB1F-775A3C9CD55E};</property>
+                  name="ParameterMapping">"Параметр0:Input",{C59DB554-39BE-4CD7-AA23-0D33A0BE1973};"Параметр1:Input",{C51FF172-4E31-4C71-AB1F-775A3C9CD55E};</property>
               </properties>
               <connections>
                 <connection
@@ -389,8 +342,8 @@ WHERE ResidueDate&gt;=?</property>
               <connections>
                 <connection
                   refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DemoSSIS_Target]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DemoSSIS_Target]"
+                  connectionManagerID="{E0D38919-DA31-4F51-85F0-6F409D31F680}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DemoSSIS_Target]"
                   description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
                   name="OleDbConnection" />
               </connections>
@@ -671,7 +624,7 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Указывает, следует ли ссылаться на метаданные в формате XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Title" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Price" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SourceID" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1251"/&gt;&lt;referenceColumn name="SourceProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Title" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Price" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SourceID" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1251"/&gt;&lt;referenceColumn name="SourceProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UpdatedOn" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -689,8 +642,8 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Задача потока данных\Уточняющий запрос.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DemoSSIS_Target]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DemoSSIS_Target]"
+                  connectionManagerID="{E0D38919-DA31-4F51-85F0-6F409D31F680}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DemoSSIS_Target]"
                   description="Диспетчер соединений, используемый для доступа к данным уточняющих запросов."
                   name="OleDbConnection" />
               </connections>
@@ -855,18 +808,18 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
         <NodeLayout
           Size="157,42"
           Id="Package\Delete Old Rows"
-          TopLeft="139,120" />
+          TopLeft="134,283" />
         <NodeLayout
           Size="172,42"
           Id="Package\Set LoadFromDate"
-          TopLeft="131,40" />
+          TopLeft="126,203" />
         <NodeLayout
           Size="196,42"
           Id="Package\Задача потока данных"
-          TopLeft="33,268" />
+          TopLeft="122,382" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Ограничение]"
-          TopLeft="217.25,82">
+          TopLeft="212.25,245">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -888,30 +841,18 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Ограничение 1]"
-          TopLeft="217.5,162">
+          TopLeft="216.25,325">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-86.5,106"
+              EndConnector="0,57"
               Start="0,0"
-              End="-86.5,98.5">
+              End="0,49.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,49"
-                    Point2="0,53"
-                    Point3="-4,53" />
-                  <mssgle:LineSegment
-                    End="-82.5,53" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-82.5,53"
-                    Point2="-86.5,53"
-                    Point3="-86.5,57" />
-                  <mssgle:LineSegment
-                    End="-86.5,98.5" />
+                    End="0,49.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -939,41 +880,29 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
         <NodeLayout
           Size="188,42"
           Id="Package\Задача потока данных\Производный столбец"
-          TopLeft="171,173" />
+          TopLeft="185,157" />
         <NodeLayout
           Size="173,42"
           Id="Package\Задача потока данных\Источник &quot;OLE DB&quot;"
-          TopLeft="194,67" />
+          TopLeft="190,38" />
         <NodeLayout
           Size="183,42"
           Id="Package\Задача потока данных\Уточняющий запрос"
           TopLeft="150,424" />
         <EdgeLayout
           Id="Package\Задача потока данных.Paths[Выход источника &quot;OLE DB&quot;]"
-          TopLeft="280.5,109">
+          TopLeft="277.75,80">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-15.5,64"
+              EndConnector="0,77"
               Start="0,0"
-              End="-15.5,56.5">
+              End="0,69.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,28"
-                    Point2="0,32"
-                    Point3="-4,32" />
-                  <mssgle:LineSegment
-                    End="-11.5,32" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-11.5,32"
-                    Point2="-15.5,32"
-                    Point3="-15.5,36" />
-                  <mssgle:LineSegment
-                    End="-15.5,56.5" />
+                    End="0,69.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1014,7 +943,7 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="7.47680338541667,-65.9100758396533,269.3797265625,12"
+              BoundingBox="7.47680338541647,-65.9100758396533,269.3797265625,12"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1049,37 +978,35 @@ where [refTable].[SourceProductID] = ? and [refTable].[SourceID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="27.9166666666667,75.1863488624052,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Задача потока данных.Paths[Выход производного столбца]"
-          TopLeft="265,215">
+          TopLeft="279,199">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-124.5,49"
+              EndConnector="-138.5,65"
               Start="0,0"
-              End="-124.5,41.5">
+              End="-138.5,57.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.5" />
+                    End="0,28.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.5"
-                    Point2="0,24.5"
-                    Point3="-4,24.5" />
+                    Point1="0,28.5"
+                    Point2="0,32.5"
+                    Point3="-4,32.5" />
                   <mssgle:LineSegment
-                    End="-120.5,24.5" />
+                    End="-134.5,32.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-120.5,24.5"
-                    Point2="-124.5,24.5"
-                    Point3="-124.5,28.5" />
+                    Point1="-134.5,32.5"
+                    Point2="-138.5,32.5"
+                    Point3="-138.5,36.5" />
                   <mssgle:LineSegment
-                    End="-124.5,41.5" />
+                    End="-138.5,57.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
